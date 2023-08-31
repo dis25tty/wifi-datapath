@@ -81,12 +81,13 @@ function UserModify() {
       fData.append("zip", zip);
       fData.append("validate", String(validate));
 
+      setvalidate(0);
+      setRes({ first: "", last: "", pincode: "", area_work: "" });
       // }
       axios
         .post(url, fData)
         .then((Response) => {
           alert(Response.data);
-          setvalidate(0);
         })
         .catch((error) => alert(error));
     }
