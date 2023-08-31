@@ -1,0 +1,38 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+#aboutcont img {
+  height: 405px;
+  width: 800px;
+  border-radius: 20px;
+}
+
+#vertab {
+  top: 95px;
+  width: 18%;
+  font-size: 22px;
+  padding-top: 30px;
+  position: fixed;
+  background: #1b1b1b;
+  color: #dddada;
+  height: 600px;
+  /* position: fixed; */
+}
+#navtab {
+  top: 0px;
+  width: 100%;
+  height: fit-content;
+  /* position: fixed; */
+  display: inline-block;
+}
+#enitrepg {
+  display: flex;
+}
+
+#content {
+  margin: 100px 0px 0px 280px;
+  width: 78%;
+  height: max-content;
+  display: block;
+}
