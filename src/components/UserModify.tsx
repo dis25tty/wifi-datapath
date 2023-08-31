@@ -26,30 +26,31 @@ function UserModify() {
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [zip, setzip] = useState("");
+
+  let fData = new FormData();
   const handleMod = () => {
     // if(first.length===0)
     console.log(validate);
-
-    let fData = new FormData();
+    console.log(email);
     const url = "http://localhost/cdot/logged-page/usermodify.php";
 
     fData.append("email", email);
-
+    // fData.append("validate", String(validate));
     //we need bcz to check the existance of the email entered
 
-    fData.append("validate", String(validate));
-    console.log(validate);
-    if (validate === 1) {
+    if (validate == 0) {
+      fData.append("validate", String(validate));
+
       axios
         .post(url, fData)
         .then((Response) => {
           // alert(Response.data);
           const ob = Response.data;
           const obb = JSON.stringify(ob);
-          // console.log(res["first"]);
           const obbj = JSON.parse(obb);
           setRes(obbj);
-          console.log(typeof res["first"] === "undefined");
+          console.log(res["first"]);
+          setvalidate(1);
           if (typeof res["first"] != "undefined" && res["first"].length !== 0) {
             setfirst(res["first"]);
             setlast(res["last"]);
@@ -58,14 +59,15 @@ function UserModify() {
             console.log(res["first"].length);
             setvalidate(2);
           } else {
-            setvalidate(1);
-            alert(Response.data);
+            setvalidate(0);
+            if (typeof res["first"] == "undefined") alert(Response.data);
           }
-          // handleMod;
         })
         .catch((error) => alert(error));
       return;
+      //   handleMod();
     }
+    // console.log(validate);
     if (validate === 3) {
       fData.append("first", first);
       fData.append("last", last);
@@ -77,16 +79,16 @@ function UserModify() {
       fData.append("ap", ap);
       fData.append("state", state);
       fData.append("zip", zip);
+      fData.append("validate", String(validate));
+
       // }
       axios
         .post(url, fData)
         .then((Response) => {
           alert(Response.data);
-          handleMod;
+          setvalidate(0);
         })
         .catch((error) => alert(error));
-
-      setvalidate(0);
     }
   };
 
@@ -103,9 +105,11 @@ function UserModify() {
         <form
           className="row g-3"
           onSubmit={() => {
-            console.log(email.length);
-            if (email.length > 0) {
-              setvalidate(1);
+            console.log("jahd");
+            if (email.length !== 0) {
+              console.log(email.length);
+              //   setvalidate(1);
+              //   console.log(validate);
               handleMod();
             }
           }}
@@ -127,7 +131,12 @@ function UserModify() {
             />
           </div>
           <div className="col-12" style={{ marginLeft: "920px" }}>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
               Modify
             </button>
           </div>
@@ -142,7 +151,7 @@ function UserModify() {
           tabIndex={-1}
           aria-labelledby="staticBackdropLabel"
           aria-hidden="true"
-          style={validate === 0 ? { display: "none" } : {}}
+          style={{ display: "none" }}
         >
           <div className="modal-dialog">
             <div className="modal-content">
@@ -157,7 +166,7 @@ function UserModify() {
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body">Delete {email} Account</div>
+              <div className="modal-body">Modify {email} Account</div>
               <div className="modal-footer">
                 <button
                   type="button"
@@ -185,7 +194,7 @@ function UserModify() {
       </div>
       <div
         className="card-body"
-        style={validate === 2 ? {} : { display: "none" }}
+        style={validate !== 2 ? { display: "none" } : {}}
       >
         <h3 className="card-title">MODIFY THE DETAILS</h3>
         <br />
@@ -194,7 +203,7 @@ function UserModify() {
         <form
           className="row g-3"
           onSubmit={() => {
-            setvalidate(3);
+            console.log(validate + "iiiiiiiiiii");
             handleMod();
           }}
         >
@@ -340,7 +349,11 @@ function UserModify() {
             </div>
           </div>
           <div className="col-12" style={{ marginLeft: "880px" }}>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={() => setvalidate(3)}
+            >
               Upadate
             </button>
             {/* <button
