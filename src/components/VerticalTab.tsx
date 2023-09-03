@@ -88,12 +88,12 @@ function VerticalTab({ onClick }: Props) {
             </li>
             <li>
               <a className="dropdown-item" href="#" onClick={() => onClick(8)}>
-                VLAN Delete
+                VLAN Modify
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#" onClick={() => onClick(9)}>
-                VLAN Modify
+                VLAN Delete
               </a>
             </li>
           </ul>

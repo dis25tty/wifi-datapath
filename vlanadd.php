@@ -37,11 +37,14 @@ $k=0;
 
         }
         else{
-            echo $arr[$k]."".$k;
             $k++;}
     }
-    // echo($arr[0]."  ".$arr[1]."  ".$arr[2]."  ".$arr[3]);
 // database insert SQL code
+if(($arr[0]==255 && $arr[1]==255 && $arr[2]==255 && $arr[3]==255) or ($arr[0]==00 && $arr[1]==00 && $arr[2]==00 && $arr[3]==00))
+{
+echo  "The IP address is reserved,therefore can't be assinged";
+}
+else{
 if($rs){
 
     $sql = "INSERT INTO `VLAN` (`iface`, `vid`, `bip`) VALUES ('$INTERFACE', '$VLAN_ID', '$BRIDGEIP')";
@@ -59,7 +62,7 @@ if($rs){
 }
 else{
     echo "VID = ".$VLAN_ID."  Already Exists";
-}}
+}}}
 else{
     echo "VLAN ID exceeds the limit";
 }

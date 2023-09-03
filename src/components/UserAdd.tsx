@@ -31,7 +31,7 @@ function UserAdd() {
     )
       alert("fill all fields");
     else {
-      const url = "http://localhost/cdot/react-app/user.php";
+      const url = "http://localhost/cdot/logged-page/user.php";
       let fData = new FormData();
       fData.append("first", first);
       fData.append("last", last);
