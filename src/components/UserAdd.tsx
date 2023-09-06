@@ -6,10 +6,10 @@ function UserAdd() {
   const [first, setfirst] = useState("");
   const [last, setlast] = useState("");
   const [email, setEmail] = useState("");
-  const [vlan, setVlan] = useState("");
-  const [password, setPass] = useState("");
+  // const [vlan, setVlan] = useState("");
+  const [phno, setPhno] = useState("");
   const [address, setAdd] = useState("");
-  const [ap, setap] = useState("");
+  // const [ap, setap] = useState("");
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [zip, setzip] = useState("");
@@ -21,10 +21,10 @@ function UserAdd() {
       !first ||
       !last ||
       !email ||
-      !vlan ||
-      !password ||
+      // !vlan ||
+      // !password ||
       !address ||
-      !ap ||
+      // !ap ||
       !city ||
       !state ||
       !zip
@@ -37,10 +37,10 @@ function UserAdd() {
       fData.append("last", last);
       fData.append("address", address);
       fData.append("email", email);
-      fData.append("vlan", vlan);
-      fData.append("password", password);
+      // fData.append("vlan", vlan);
+      fData.append("phno", phno);
       fData.append("city", city);
-      fData.append("ap", ap);
+      // fData.append("ap", ap);
       fData.append("state", state);
       fData.append("zip", zip);
 
@@ -99,15 +99,14 @@ function UserAdd() {
           </div>
           <div className="col-md-6">
             <label htmlFor="inputPassword4" className="form-label">
-              Password
+              Phone no.
             </label>
             <input
-              required
-              type="password"
+              type="number"
               className="form-control"
-              id="password"
-              value={password}
-              onChange={(e) => setPass(e.target.value)}
+              id="phno"
+              value={phno}
+              onChange={(e) => setPhno(e.target.value)}
             />
           </div>
           <div className="col-12">
@@ -124,7 +123,7 @@ function UserAdd() {
               placeholder="Service to be rendered"
             />
           </div>
-          <div className="col-md-6">
+          {/* <div className="col-md-6">
             <label htmlFor="vlanselector" className="form-label">
               VLAN
             </label>
@@ -159,7 +158,7 @@ function UserAdd() {
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
-          </div>
+          </div> */}
 
           {/* <div className="col-12">
                 <label htmlFor="inputAddress2" className="form-label">

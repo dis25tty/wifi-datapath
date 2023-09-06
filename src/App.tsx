@@ -8,15 +8,21 @@ import "./App.css";
 function App() {
   const [a, setA] = useState(-1);
   const handleClick = (num: number) => {
-    console.log(num);
-    setA(num);
+    if (num == 100) {
+      document.location = "http://localhost/cdot/logged-page/index2.php";
+    } else if (num == -1) {
+      location.reload();
+    } else {
+      console.log(num);
+      setA(num);
+    }
     // a = num;
   };
   return (
     <>
       <div id="entierpg">
         <div id="navtab">
-          <NavComp></NavComp>
+          <NavComp onClick={handleClick}></NavComp>
         </div>
         <div id="vertab">
           <VerticalTab onClick={handleClick}></VerticalTab>

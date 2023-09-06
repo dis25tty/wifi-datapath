@@ -1,4 +1,7 @@
-function NavComp() {
+interface Props {
+  onClick: (menuVal: number) => void;
+}
+function NavComp({ onClick }: Props) {
   // const ima = document.getElementById("imagenav");
   // if (ima != null) {
   //   ima.style.height = "70px";
@@ -50,7 +53,12 @@ function NavComp() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                    onClick={() => onClick(-1)}
+                  >
                     Home
                   </a>
                 </li>
@@ -60,12 +68,12 @@ function NavComp() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="#" onClick={() => onClick(100)}>
                     Logout
                   </a>
                 </li>
               </ul>
-              <form className="d-flex mt-3" role="search">
+              {/* <form className="d-flex mt-3" role="search">
                 <input
                   className="form-control me-2"
                   type="search"
@@ -75,7 +83,7 @@ function NavComp() {
                 <button className="btn btn-success" type="submit">
                   Search
                 </button>
-              </form>
+              </form> */}
             </div>
           </div>
         </div>

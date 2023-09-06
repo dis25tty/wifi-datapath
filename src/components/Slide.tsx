@@ -28,28 +28,28 @@ function Slide() {
         data-bs-ride="carousel"
       >
         <div id="carouselid" className="carousel-inner">
-          <div className="carousel-item active" data-bs-interval="2000">
+          <div className="carousel-item active" data-bs-interval="1500">
             <img
               src="src/assets/slide1.jpg"
               className="d-block w-100 "
               alt="..."
             ></img>
           </div>
-          <div className="carousel-item" data-bs-interval="2000">
+          <div className="carousel-item" data-bs-interval="1500">
             <img
               src="src/assets/slide2.jpg"
               className="d-block w-100"
               alt="..."
             ></img>
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item" data-bs-interval="1500">
             <img
               src="src/assets/slide3.jpg"
               className="d-block w-100"
               alt="..."
             ></img>
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item" data-bs-interval="1500">
             <img
               src="src/assets/bsnl.jpg"
               className="d-block w-100"

@@ -15,7 +15,7 @@ function VerticalTab({ onClick }: Props) {
             aria-current="page"
             href="#"
             style={{ color: "#dddada" }}
-            onClick={() => onClick(1)}
+            onClick={() => onClick(-1)}
           >
             About
           </a>
@@ -106,28 +106,27 @@ function VerticalTab({ onClick }: Props) {
             data-bs-toggle="dropdown"
             aria-expanded="false"
             style={{ color: "#dddada", marginBottom: "8px", marginTop: "10px" }}
-            onClick={() => onClick(10)}
           >
             AP Details
           </a>
           <ul className="dropdown-menu dropdown-menu-dark">
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="#" onClick={() => onClick(10)}>
                 AP View
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="#" onClick={() => onClick(11)}>
                 AP Add
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="#" onClick={() => onClick(12)}>
                 AP Delete
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="#" onClick={() => onClick(13)}>
                 AP Modify
               </a>
             </li>

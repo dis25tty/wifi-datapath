@@ -6,6 +6,9 @@ import UserView from "./UserView";
 import VlanAdd from "./VlanAdd";
 import VlanDelete from "./VlanDelete";
 import VlanModify from "./VlanModify";
+import ApAdd from "./ApAdd";
+import ApDelete from "./ApDelete";
+import ApModify from "./ApModify";
 
 interface Props {
   menuval: number;
@@ -22,6 +25,9 @@ function MiddleCont({ menuval }: Props) {
         {menuval === 7 && <VlanAdd></VlanAdd>}
         {menuval === 8 && <VlanModify></VlanModify>}
         {menuval === 9 && <VlanDelete></VlanDelete>}
+        {menuval === 11 && <ApAdd></ApAdd>}
+        {menuval === 12 && <ApDelete></ApDelete>}
+        {menuval === 13 && <ApModify></ApModify>}
       </div>
     </>
   );

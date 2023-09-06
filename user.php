@@ -9,7 +9,7 @@ $con = mysqli_connect('localhost', 'root', '','datapath');
 
 // get the post records
 $FIRSTNAME = $_POST['first'];
-$PASSWORD = $_POST['password'];
+// $PASSWORD = $_POST['password'];
 $EMAIL_ID = $_POST['email'];
 
 $last = $_POST['last'];
@@ -18,8 +18,8 @@ $area = $_POST['address'];
 
 $city = $_POST['city'];
 $state = $_POST['state'];
-$vlan = $_POST['vlan'];
-$ap=$_POST['ap'];
+$phno = $_POST['phno'];
+// $ap=$_POST['ap'];
 $rs=1;
 // echo $FIRSTNAME;
 $res=mysqli_query($con,"SELECT * FROM USER");
@@ -43,7 +43,7 @@ if($rs)
 {
     // (`firstname`,`lastname`,`pincode`,`area_work`, `password`,`phno`,`email`)
         
-        $sql = "INSERT INTO `USER` (`firstname`,`lastname`,`pincode`,`area_work`, `password`,`phno`,`email`) VALUES ('$FIRSTNAME','$last','$pin','$area', '$PASSWORD','$vlan','$EMAIL_ID')"; 
+        $sql = "INSERT INTO `USER` (`firstname`,`lastname`,`pincode`,`area_work`, `phno`,`email`) VALUES ('$FIRSTNAME','$last','$pin','$area','$phno','$EMAIL_ID')"; 
         $rs = mysqli_query($con, $sql);
         if($rs){
 
