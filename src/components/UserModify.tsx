@@ -9,6 +9,9 @@ function UserModify() {
     last: "",
     pincode: "",
     area_work: "",
+    phno: "",
+    city: "",
+    state: "",
   });
 
   // Headers: [{ key: "first", label: "first" }];
@@ -17,14 +20,13 @@ function UserModify() {
   const [first, setfirst] = useState("");
   const [last, setlast] = useState("");
   const [email, setEmail] = useState("");
-  const [vlan, setVlan] = useState("");
 
-  // const [password, setPass] = useState("");
+  const [phno, setPhno] = useState("");
 
   const [address, setAdd] = useState("");
-  const [ap, setap] = useState("");
-  const [city, setcity] = useState("");
-  const [state, setstate] = useState("");
+
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [zip, setzip] = useState("");
 
   let fData = new FormData();
@@ -56,6 +58,9 @@ function UserModify() {
             setlast(res["last"]);
             setAdd(res["area_work"]);
             setzip(res["pincode"]);
+            setPhno(res["phno"]);
+            setCity(res["city"]);
+            setState(res["state"]);
             console.log(res["first"].length);
             setvalidate(2);
           } else {
@@ -73,16 +78,25 @@ function UserModify() {
       fData.append("last", last);
       fData.append("address", address);
       // fData.append("email", email);
-      fData.append("vlan", vlan);
+
       // fData.append("password", password);
       fData.append("city", city);
-      fData.append("ap", ap);
+
       fData.append("state", state);
+      fData.append("phno", phno);
       fData.append("zip", zip);
       fData.append("validate", String(validate));
 
       setvalidate(0);
-      setRes({ first: "", last: "", pincode: "", area_work: "" });
+      setRes({
+        first: "",
+        last: "",
+        pincode: "",
+        area_work: "",
+        phno: "",
+        city: "",
+        state: "",
+      });
       // }
       axios
         .post(url, fData)
@@ -234,7 +248,19 @@ function UserModify() {
               onChange={(e) => setlast(e.target.value)}
             />
           </div>
-
+          <div className="col-md-6">
+            <label htmlFor="first" className="form-label">
+              Phno
+            </label>
+            <input
+              required
+              type="number"
+              className="form-control"
+              id="phno"
+              value={phno}
+              onChange={(e) => setPhno(e.target.value)}
+            />
+          </div>
           <div className="col-12">
             <label htmlFor="inputAddress" className="form-label">
               Area/Work Station/Dept
@@ -249,55 +275,7 @@ function UserModify() {
               placeholder="Service to be rendered"
             />
           </div>
-          <div className="col-md-6">
-            <label htmlFor="vlanselector" className="form-label">
-              VLAN
-            </label>
 
-            <select
-              required
-              id="vlan"
-              value={vlan}
-              onChange={(e) => setVlan(e.target.value)}
-              className="form-select"
-              aria-label="Default select example"
-            >
-              <option selected>Select the VLAN</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div className="col-md-6">
-            <label htmlFor="APselector" className="form-label">
-              AP
-            </label>
-            <select
-              required
-              id="ap"
-              value={ap}
-              onChange={(e) => setap(e.target.value)}
-              className="form-select"
-              aria-label="Default select example"
-            >
-              <option selected>Select the AP</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-
-          {/* <div className="col-12">
-                <label htmlFor="inputAddress2" className="form-label">
-                  Address 2
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputAddress2"
-                  placeholder="Apartment, studio, or floor"
-                />
-              </div> */}
           <div className="col-md-6">
             <label htmlFor="inputCity" className="form-label">
               City
@@ -305,7 +283,7 @@ function UserModify() {
             <input
               required
               type="text"
-              onChange={(e) => setcity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               className="form-control"
               id="city"
               value={city}
@@ -320,7 +298,7 @@ function UserModify() {
               id="state"
               className="form-select"
               value={state}
-              onChange={(e) => setstate(e.target.value)}
+              onChange={(e) => setState(e.target.value)}
             />
           </div>
           <div className="col-md-2">
@@ -355,7 +333,7 @@ function UserModify() {
               className="btn btn-primary"
               onClick={() => setvalidate(3)}
             >
-              Upadate
+              Update
             </button>
             {/* <button
               type="reset"

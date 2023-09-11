@@ -63,7 +63,7 @@ function NavComp({ onClick }: Props) {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="#" onClick={() => onClick(200)}>
                     Profile
                   </a>
                 </li>

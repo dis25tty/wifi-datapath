@@ -1,6 +1,7 @@
+import { stringify } from "querystring";
 import { useState } from "react";
 
-function UserView() {
+function Profile() {
   const [comps, setComp] = useState([
     {
       firstname: "",
@@ -9,12 +10,13 @@ function UserView() {
       city: "",
       state: "",
       phno: "",
+      password: "",
       pincode: "",
       email: "",
     },
   ]);
   function compDisplay() {
-    fetch("http://localhost/cdot/logged-page/userview.php")
+    fetch("http://localhost/cdot/logged-page/profile.php?email=" + email)
       .then((response) => {
         console.log(response);
         return response.json();
@@ -27,12 +29,19 @@ function UserView() {
         console.log("Error reading data " + err);
       });
   }
-  compDisplay();
+  const myh = new Headers();
+  const x = window.location.href;
+  var ema = x.split("=");
+  ema = ema[1].split("#");
+  const email = ema[0];
+  email && compDisplay();
   return (
     <>
       <div className="card">
         <div className="card-body">
-          <h3 className="card-title">USER VIEW</h3>
+          <h3 className="card-title">
+            <center> PROFILE </center>
+          </h3>
         </div>
       </div>
       <br />
@@ -51,6 +60,9 @@ function UserView() {
                   Email ID &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;{item.email}
                 </h6>
                 <h6 className="card-subtitle mb-2 text">
+                  Password &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;{item.password}
+                </h6>
+                <h6 className="card-subtitle mb-2 text">
                   Phno &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;{item.phno}
                 </h6>
                 <h6 className="card-subtitle mb-2 text">
@@ -67,11 +79,10 @@ function UserView() {
                 </h6>
               </div>
             </div>
-            <br />
           </>
         );
       })}
     </>
   );
 }
-export default UserView;
+export default Profile;

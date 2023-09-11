@@ -21,27 +21,26 @@ if($validate==3){
     
     $city = $_POST['city'];
     $state = $_POST['state'];
-    $vlan = $_POST['vlan'];
-    $ap=$_POST['ap'];
+    $phno = $_POST['phno'];
+  
     $last = mysqli_real_escape_string($con, $last);
     $first = mysqli_real_escape_string($con, $first);
     $pin = mysqli_real_escape_string($con, $pin);
     $area = mysqli_real_escape_string($con, $area);
     $city = mysqli_real_escape_string($con, $city);
-    $vlan = mysqli_real_escape_string($con, $vlan);
-    $ap = mysqli_real_escape_string($con, $ap);
+    // $phno = mysqli_real_escape_string($con, $phno);
+   
    // Database update SQL code
    if ($first=="" or $last=="" or
-       $vlan=="" or
+       $phno=="" or
        $area=="" or
-       $ap=="" or
        $city=="" or
        $state=="" 
      )
        echo "Fill all fields";
        else
     {    
-    $updateSql = "UPDATE `USER` SET `firstname` = '$first', `lastname` = '$last' ,`pincode`='$pin' ,`area_work`='$area' WHERE `email` = '$email' ";
+    $updateSql = "UPDATE `USER` SET `firstname` = '$first', `lastname` = '$last' ,`pincode` = '$pin' ,`area_work`  ='$area',`city`='$city',`state`='$state',`phno`='$phno' WHERE `email` = '$email' ";
    // Update record in the database
    $rs =  mysqli_query($con, $updateSql);
 
@@ -57,7 +56,7 @@ else  if (mysqli_num_rows($result)) {
     // echo"valid email".$row['firstname'];
     
     // Escape the modified values to prevent SQL injection
-    $data =array('first'=>$row['firstname'],'last'=>$row['lastname'],'pincode'=>$row['pincode'],'area_work'=>$row['area_work']);
+    $data =array('first'=>$row['firstname'],'last'=>$row['lastname'],'city'=>$row['city'],'state'=>$row['state'],'phno'=>$row['phno'],'pincode'=>$row['pincode'],'area_work'=>$row['area_work']);
     echo json_encode($data);
 }
 else

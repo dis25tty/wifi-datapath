@@ -215,10 +215,12 @@ function ApModify() {
               className="form-select"
               aria-label="Default select example"
             >
-              <option selected>Select the VLAN</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option> --Select an Interface-- </option> <br />
+              <br />
+              <option value="lo"> lo </option>
+              <option value="enp1s0"> enp1s0 </option>
+              <option value="wlp2s0"> wlp2s0 </option>
+              <option value="docker0"> docker0 </option>
             </select>
           </div>
           <div className="col-12">

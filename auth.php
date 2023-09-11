@@ -28,7 +28,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Successful login
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['name'] = $row['name'];
-        header("Location: http://localhost:5173"); // Redirect to datapath.html
+        header("Location: http://localhost:5173?email=".$row['email']); // Redirect to datapath.html
         exit();
     } 
     else {
